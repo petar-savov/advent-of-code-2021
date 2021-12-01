@@ -30,17 +30,9 @@ func main() {
 	// part 2
 	count = 0
 	for i := 3; i < len(inp); i++ {
-		if sum(inp[i-3:i]) < sum(inp[i-2:i+1]) {
-			count += 1
+		if inp[i-3] < inp[i] {
+			count++
 		}
 	}
 	fmt.Println(count)
-}
-
-func sum(arr []int) int {
-	res := 0
-	for i := 0; i < len(arr); i++ {
-		res += arr[i]
-	}
-	return res
 }
