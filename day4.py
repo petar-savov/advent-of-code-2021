@@ -18,19 +18,12 @@ def check(board):
     return False
 
 
-def update(board, num):
-    new = board.copy()
-    new[new == num] = -1
-
-    return new
-
-
 n_boards = len(boards)
 wins = [0] * len(boards)
 
 for n in nums:
     for i in range(n_boards):
-        boards[i] = update(boards[i], n)
+        boards[i][boards[i] == n] = -1
         if wins[i] == 0 and check(boards[i]):
             res = n * (boards[i][boards[i] != -1].sum())
             wins[i] = 1
