@@ -13,6 +13,7 @@ boards = [np.array(board) for board in boards]
 
 
 def check(board):
+    # marked positions are set to -1
     if any(board.sum(0) == -5) or any(board.sum(1) == -5):
         return True
     return False
@@ -25,7 +26,7 @@ for n in nums:
     for i in range(n_boards):
         boards[i][boards[i] == n] = -1
         if wins[i] == 0 and check(boards[i]):
-            res = n * (boards[i][boards[i] != -1].sum())
+            res = n * boards[i][boards[i] != -1].sum()
             wins[i] = 1
             if sum(wins) == 1:
                 first = res
